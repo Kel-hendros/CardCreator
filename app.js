@@ -29,6 +29,9 @@ function resetImage() {
 
 // Inicializar listeners cuando el DOM esté listo
 document.addEventListener("DOMContentLoaded", () => {
+  let currentType = "none"; // Tipo inicial
+  let currentPosition = "center";
+
   const thumbs = document.querySelectorAll(".border-thumb");
   const thumbsIcon = document.querySelectorAll(".icon-thumb");
 
@@ -57,6 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Lógica de cambio de tipo de criatura
   function setCreatureType(val) {
+    // Actualizar tipo actual
+    currentType = val;
     // Actualizar icono principal
     const src = iconMap[val] || iconMap.none;
     typeIcon.src = src;
@@ -70,6 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
       subtypeIcon.style.display = "none";
       subtypeIcon.src = iconMap.none;
     }
+    // Actualizar icono de tipo
+    updatePositionButtons();
   }
 
   clanSelect.addEventListener("change", () => {
@@ -95,8 +102,10 @@ document.addEventListener("DOMContentLoaded", () => {
       // Derivar el valor de tipo desde el nombre de archivo data-icon
       const scr = thumb.dataset.icon;
       const val = scr.substring(scr.lastIndexOf("/") + 1, scr.lastIndexOf("."));
+      // Normalizar valor 'ninguno' a 'none'
+      const normalizedVal = val === "ninguno" ? "none" : val;
       // Aplicar la lógica de cambio de tipo
-      setCreatureType(val);
+      setCreatureType(normalizedVal);
     });
   });
 
@@ -307,6 +316,56 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Inicializar íconos para evitar src vacíos
+  // Posicionar ícono de tipo con botones
+  const positionButtonsContainer = document.querySelector(".position-buttons");
+  const btnLeft = document.getElementById("icon-left");
+  const btnCenter = document.getElementById("icon-center");
+  const btnRight = document.getElementById("icon-right");
+
+  // Actualizar estilo .active en botones según posición actual
+  function updatePositionButtonsActive() {
+    const disabled = currentType === "none";
+    [btnLeft, btnCenter, btnRight].forEach((btn) => {
+      btn.classList.toggle(
+        "active",
+        !disabled && btn.id === `icon-${currentPosition}`
+      );
+    });
+  }
+
+  // funcion para habilitar o desabilitar los botones de posicion
+  function updatePositionButtons() {
+    const disabled = currentType === "none";
+    // Añade o quita la clase 'disabled' según el estado
+    positionButtonsContainer.classList.toggle("disabled", disabled);
+    [btnLeft, btnCenter, btnRight].forEach((btn) => (btn.disabled = disabled));
+    updatePositionButtonsActive();
+  }
+
+  // Inicializar íconos tras configurar botones
   setCreatureType("none");
+
+  if (typeIcon) {
+    btnLeft &&
+      btnLeft.addEventListener("click", () => {
+        typeIcon.classList.remove("center", "right");
+        typeIcon.classList.add("left");
+        currentPosition = "left";
+        updatePositionButtonsActive();
+      });
+    btnCenter &&
+      btnCenter.addEventListener("click", () => {
+        typeIcon.classList.remove("left", "right");
+        typeIcon.classList.add("center");
+        currentPosition = "center";
+        updatePositionButtonsActive();
+      });
+    btnRight &&
+      btnRight.addEventListener("click", () => {
+        typeIcon.classList.remove("left", "center");
+        typeIcon.classList.add("right");
+        currentPosition = "right";
+        updatePositionButtonsActive();
+      });
+  }
 });
