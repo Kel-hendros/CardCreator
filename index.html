@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Card Creator</title>
+    <!-- Enlaza tu CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Card Creator</h1>
+    <!-- Formulario para subir o pegar la URL de la imagen -->
+    <div class="app-container">
+        <div class="ux-container">
+
+            <form id="image-form">
+                <div class="form-group">
+                    <!-- Label que actúa como botón -->
+                    <label for="file-input" class="custom-file-label">Subir imagen</label>
+                    <input type="file" id="file-input" accept="image/*" style="display: none;">
+                </div>
+                <div class="form-group">
+                    <input type="url" id="url-input" placeholder="Pegar URL de imagen">
+                </div>
+
+            </form>
+
+            <!-- Selector de tipo de criatura -->
+            <div class="form-group creature-type">
+
+                <div class="creature-type-icons">
+                    <!-- Iconos de tipo de criatura -->
+                    <div class="icon-container">
+                        <img class="icon-thumb active" data-icon="imagenes/iconos/ninguno.png"
+                            src="imagenes/iconos/ninguno.png" alt="Ninguno" width="60">
+                        <p class="icon-label">Ninguno</p>
+                    </div>
+                    <div class="icon-container">
+                        <img class="icon-thumb" data-icon="imagenes/iconos/cainita.png"
+                            src="imagenes/iconos/cainita.png" alt="Cainita" width="60">
+                        <p class="icon-label">Cainita</p>
+                    </div>
+                    <div class="icon-container">
+                        <img class="icon-thumb" data-icon="imagenes/iconos/hombreLobo.png"
+                            src="imagenes/iconos/hombreLobo.png" alt="Hombre Lobo" width="60">
+                        <p class="icon-label">Hombre Lobo</p>
+                    </div>
+                    <div class="icon-container">
+                        <img class="icon-thumb" data-icon="imagenes/iconos/changeling.png"
+                            src="imagenes/iconos/changeling.png" alt="Changeling" width="60">
+                        <p class="icon-label">Changeling</p>
+                    </div>
+                    <div class="icon-container">
+                        <img class="icon-thumb" data-icon="imagenes/iconos/mortal.png" src="imagenes/iconos/mortal.png"
+                            alt="Mortal" width="60">
+                        <p class="icon-label">Mortal</p>
+                    </div>
+                    <div class="icon-container">
+                        <img class="icon-thumb" data-icon="imagenes/iconos/wraith.png" src="imagenes/iconos/wraith.png"
+                            alt="Wraith" width="60">
+                        <p class="icon-label">Wraith</p>
+                    </div>
+                    <div class="icon-container">
+                        <img class="icon-thumb" data-icon="imagenes/iconos/mage.png" src="imagenes/iconos/mage.png"
+                            alt="Mago" width="60">
+                        <p class="icon-label">Mago</p>
+                    </div>
+
+                </div>
+            </div>
+            <div id="clan-form" class="form-group hidden">
+                <div class="clan-form-container">
+                    <label for="clan">Clan:</label>
+                    <select id="clan">
+                        <option value="ninguno">Ninguno</option>
+                        <option value="Ahrimanes">Ahrimanes</option>
+                        <option value="Anda">Anda</option>
+                        <option value="Assamita">Assamita</option>
+                        <option value="Baali">Baali</option>
+                        <option value="Brujah">Brujah</option>
+                        <option value="Caitiff">Caitiff</option>
+                        <option value="Capadocio">Capadocio</option>
+                        <option value="Gangrel">Gangrel</option>
+                        <option value="Gargolas">Gárgolas</option>
+                        <option value="Giovanni">Giovanni</option>
+                        <option value="Heraldos-de-las-Calaveras">Heraldos de las Calaveras</option>
+                        <option value="Hermanos-de-Sangre">Hermanos de Sangre</option>
+                        <option value="Hijas-de-la-Cacofonía">Hijas de la Cacofonía</option>
+                        <option value="Hijos-de-Osiris">Hijos de Osiris</option>
+                        <option value="Kiasyd">Kiasyd</option>
+                        <option value="Lamias">Lamias</option>
+                        <option value="Lasombra">Lasombra</option>
+                        <option value="Lhianan">Lhiánan</option>
+                        <option value="Malkavian">Malkavian</option>
+                        <option value="Nagaraja">Nagaraja</option>
+                        <option value="Noiad">Noiad</option>
+                        <option value="Nosferatu">Nosferatu</option>
+                        <option value="Ravnos">Ravnos</option>
+                        <option value="Salubri">Salubri</option>
+                        <option value="Samedi">Samedi</option>
+                        <option value="Seguidores-de-Set">Seguidores de Set</option>
+                        <option value="Toreador">Toreador</option>
+                        <option value="Tremere">Tremere</option>
+                        <option value="Tzimisce">Tzimisce</option>
+                        <option value="Ventrue">Ventrue</option>
+                        <option value="Verdaderos-Brujah">Verdaderos Brujah</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Opciones de borde -->
+            <div id="border-options">
+                <p>Seleccioná un borde:</p>
+                <img class="border-thumb active" data-border="imagenes/bordes/greenMarble.png"
+                    src="imagenes/bordes/greenMarble.png" alt="Borde Green Marble" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/gray.png" src="imagenes/bordes/gray.png"
+                    alt="Borde Gray" width="60">
+            </div>
+            <!-- Ajustes de posición de la imagen -->
+            <div id="adjustments-container">
+
+                <div class="slider-group">
+                    <label for="range-x">Mover horizontal:</label>
+                    <input type="range" id="range-x" min="0" max="0" value="0">
+                </div>
+                <div class="slider-group">
+                    <label for="range-y">Mover vertical:</label>
+                    <input type="range" id="range-y" min="0" max="0" value="0">
+                </div>
+                <!-- Nuevo slider de zoom -->
+                <div class="slider-group">
+                    <label for="range-zoom">Zoom:</label>
+                    <input type="range" id="range-zoom" min="1" max="3" step="0.01" value="1">
+                </div>
+            </div> <!-- fin de #adjustments-container -->
+
+            <!-- Campos de texto para Nombre y Descripción -->
+            <div id="text-controls">
+                <div class="text-form-group">
+                    <label for="card-name">Nombre:</label>
+                    <input type="text" id="card-name" placeholder="Escribe el nombre">
+                </div>
+                <div class="text-form-group">
+                    <label for="card-desc">Descripción:</label>
+                    <textarea id="card-desc" rows="3" placeholder="Escribe la descripción"></textarea>
+                </div>
+            </div>
+
+            <button id="export-btn">Descargar PNG</button>
+        </div>
+        <!-- Contenedor de la carta -->
+        <div class="card-preview">
+            <div id="card-wrapper">
+                <div id="card">
+                    <!-- Fondo de la carta -->
+                    <div class="card-background"></div>
+                    <!-- Iconos superpuestos -->
+                    <img class="icon type-icon" src="" alt="Icono de tipo">
+                    <img class="icon clan-icon" src="" alt="Icono de clan">
+
+                    <!-- Borde de la carta -->
+                    <div class="border-layer"></div>
+                    <!-- Imagen del usuario -->
+                    <div class="user-image">
+                        <img src="imagenes/default/defaultImage.png" alt="Imagen de personaje">
+                    </div>
+                    <!-- Título de la carta -->
+                    <div class="card-text">
+                        <span class="card-title">Nombre del personaje</span>
+                        <!-- Descripción de la carta -->
+                        <span class="card-description">Breve descripción del personaje</span>
+                        <div class="text-background">
+                            <img src="imagenes/default/textBackground.jpg" alt="Fondo de texto">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- Tu JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
