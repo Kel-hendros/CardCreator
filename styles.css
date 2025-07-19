@@ -57,7 +57,7 @@ button {
     align-items: flex-start;
     max-width: 950px;
     min-width: 800px;
-    width: 90%;
+    width: 100%;
     background-color: var(--background-color);
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -233,7 +233,8 @@ button {
 }
 
 .border-thumb.active {
-    border-color: #0077cc;
+    /* border-color: var(--primary-color); */
+    box-shadow: 0 0 10px var(--primary-color);
 }
 
 /* Estilos de los ajustes de la imagen */
