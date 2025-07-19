@@ -29,12 +29,21 @@ body {
     font-family: sans-serif;
     background-color: black;
     color: var(--text-color);
-    padding: 20px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: 'Goudos', serif;
     font-size: 1rem;
+}
+
+body h1 {
+    font-family: 'Delavan', sans-serif;
+    font-size: 2rem;
+    color: white;
+    font-weight: normal;
+    margin-bottom: 20px;
+    line-height: 1;
 }
 
 button {
@@ -46,7 +55,7 @@ button {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    max-width: 90%;
+    max-width: 950px;
     min-width: 800px;
     width: 90%;
     background-color: var(--background-color);
