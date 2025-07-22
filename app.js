@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentPosition = "center";
 
   const thumbs = document.querySelectorAll(".border-thumb");
+  const selectedBorderSpan = document.getElementById("selected-border");
   const thumbsIcon = document.querySelectorAll(".icon-thumb");
 
   // Mapeo de tipos a rutas de iconos
@@ -93,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Icon-thumb: seleccionar tipo de criatura con click en iconos
   // thumbsIcon ya fue declarado arriba
+
   thumbsIcon.forEach((thumb) => {
     thumb.addEventListener("click", () => {
       // Quitar clase active de todas las miniaturas
@@ -134,6 +136,12 @@ document.addEventListener("DOMContentLoaded", () => {
       thumb.classList.add("active");
       // Cambiar el borde usando la URL del data attribute
       changeBorder(thumb.dataset.border);
+      // Get the alt text from the thumb element or its inner img
+      const imgEl =
+        thumb.tagName.toLowerCase() === "img"
+          ? thumb
+          : thumb.querySelector("img");
+      selectedBorderSpan.textContent = imgEl?.alt || "";
     });
   });
 
@@ -141,6 +149,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const initial = document.querySelector(".border-thumb.active");
   if (initial) {
     changeBorder(initial.dataset.border);
+    const initImg =
+      initial.tagName.toLowerCase() === "img"
+        ? initial
+        : initial.querySelector("img");
+    selectedBorderSpan.textContent = initImg?.alt || "";
   }
 
   // Manejar cambio de imagen desde URL o archivo
@@ -198,14 +211,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentScale = 1;
 
   img.style.transformOrigin = "top left";
-
-  // Botón de reiniciar imagen
-  const resetBtn = document.getElementById("reset-btn");
-  if (resetBtn) {
-    resetBtn.addEventListener("click", () => {
-      resetImage();
-    });
-  }
 
   // Ajustes de posición con sliders
   const rangeX = document.getElementById("range-x");
@@ -303,6 +308,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (exportBtn) {
     exportBtn.addEventListener("click", () => {
       const card = document.getElementById("card-wrapper");
+      const prevZoom = card.style.zoom;
+      card.style.zoom = 1;
       domtoimage
         .toPng(card)
         .then((dataUrl) => {
@@ -312,7 +319,10 @@ document.addEventListener("DOMContentLoaded", () => {
           link.href = dataUrl;
           link.click();
         })
-        .catch((err) => console.error("Error exportando la carta:", err));
+        .catch((err) => console.error("Error exportando la carta:", err))
+        .finally(() => {
+          card.style.zoom = prevZoom;
+        });
     });
   }
 

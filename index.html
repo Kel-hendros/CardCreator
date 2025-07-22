@@ -116,27 +116,67 @@
 
             <!-- Opciones de borde -->
             <div id="border-options">
-                <p>Seleccioná un borde:</p>
+                <div class="border-title">
+                    <p>Seleccioná un borde: <span id="selected-border"></span></p>
+                </div>
                 <img class="border-thumb active" data-border="imagenes/bordes/greenMarble.png"
-                    src="imagenes/bordes/greenMarble.png" alt="Borde Marmol Verde" width="60">
+                    src="imagenes/bordes/greenMarble.png" alt="Marmol Verde" width="60">
                 <img class="border-thumb" data-border="imagenes/bordes/redMarble.png"
-                    src="imagenes/bordes/redMarble.png" alt="Borde Marmol Rojo" width="60">
+                    src="imagenes/bordes/redMarble.png" alt="Marmol Rojo" width="60">
                 <img class="border-thumb" data-border="imagenes/bordes/whiteMarble.png"
-                    src="imagenes/bordes/whiteMarble.png" alt="Borde Marmol Blanco" width="60">
-                <img class="border-thumb" data-border="imagenes/bordes/gray.png" src="imagenes/bordes/gray.png"
-                    alt="Borde Gray" width="60">
-                <img class="border-thumb" data-border="imagenes/bordes/blackLeather.png"
-                    src="imagenes/bordes/blackLeather.png" alt="Borde Cuero Negro" width="60">
-                <img class="border-thumb" data-border="imagenes/bordes/oxido.png" src="imagenes/bordes/oxido.png"
-                    alt="Borde Oxido" width="60">
-                <img class="border-thumb" data-border="imagenes/bordes/greenPaint.png"
-                    src="imagenes/bordes/greenPaint.png" alt="Borde Pintura Verde" width="60">
-                <img class="border-thumb" data-border="imagenes/bordes/gothic.png" src="imagenes/bordes/gothic.png"
-                    alt="Borde Gótico" width="60">
+                    src="imagenes/bordes/whiteMarble.png" alt="Marmol Blanco" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/blackMarble.png"
+                    src="imagenes/bordes/blackMarble.png" alt="Marmol Negro" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/abyss.png" src="imagenes/bordes/abyss.png"
+                    alt="Abismo" width="60">
                 <img class="border-thumb" data-border="imagenes/bordes/anarchy.png" src="imagenes/bordes/anarchy.png"
-                    alt="Borde Anarquía" width="60">
+                    alt="Anarquistas" width="60">
                 <img class="border-thumb" data-border="imagenes/bordes/splatter.png" src="imagenes/bordes/splatter.png"
-                    alt="Borde Splatter" width="60">
+                    alt="Frenesí" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/blackLeather.png"
+                    src="imagenes/bordes/blackLeather.png" alt="Cuero Negro" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/bouquet.png" src="imagenes/bordes/bouquet.png"
+                    alt="Arikel" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/capadocian.png"
+                    src="imagenes/bordes/capadocian.png" alt="Capadocio" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/tzimice.png" src="imagenes/bordes/tzimice.png"
+                    alt="Tzimisce" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/set.png" src="imagenes/bordes/set.png" alt="Set"
+                    width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/baali.png" src="imagenes/bordes/baali.png"
+                    alt="Shaitan" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/gray.png" src="imagenes/bordes/gray.png"
+                    alt="Victoriano" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/alchemy.png" src="imagenes/bordes/alchemy.png"
+                    alt="Alquimia" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/Gotico.png" src="imagenes/bordes/Gotico.png"
+                    alt="Gotico" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/oxido.png" src="imagenes/bordes/oxido.png"
+                    alt="Oxido" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/circuit.png" src="imagenes/bordes/circuit.png"
+                    alt="Tecnocracia" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/bluePaint.png"
+                    src="imagenes/bordes/bluePaint.png" alt="Pintura Azul" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/goldPaint.png"
+                    src="imagenes/bordes/goldPaint.png" alt="Pintura Dorada" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/lilaPaint.png"
+                    src="imagenes/bordes/lilaPaint.png" alt="Pintura Rosa" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/orangePaint.png"
+                    src="imagenes/bordes/orangePaint.png" alt="Pintura Naranja" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/greenPaint.png"
+                    src="imagenes/bordes/greenPaint.png" alt="Pintura Verde" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/jungleFrame.png"
+                    src="imagenes/bordes/jungleFrame.png" alt="El Seto" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/Plinket.png" src="imagenes/bordes/Plinket.png"
+                    alt="Plinket" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/stoneWall.png"
+                    src="imagenes/bordes/stoneWall.png" alt="Pared de Piedra" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/woodenFrame.png"
+                    src="imagenes/bordes/woodenFrame.png" alt="Vikingo" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/Uktena.png" src="imagenes/bordes/Uktena.png"
+                    alt="Uktena" width="60">
+                <img class="border-thumb" data-border="imagenes/bordes/Theurge.png" src="imagenes/bordes/Theurge.png"
+                    alt="Theurge" width="60">
             </div>
             <!-- Ajustes de posición de la imagen -->
             <div id="adjustments-container">
@@ -168,14 +208,15 @@
                 </div>
             </div>
 
-            <button id="export-btn">Descargar PNG</button>
+
         </div>
         <!-- Contenedor de la carta -->
         <div class="card-preview">
             <div id="card-wrapper">
+                <!-- Fondo de la carta -->
+                <div class="card-background"></div>
                 <div id="card">
-                    <!-- Fondo de la carta -->
-                    <div class="card-background"></div>
+
                     <!-- Iconos superpuestos -->
                     <img class="icon type-icon center" src="" alt="Icono de tipo">
                     <img class="icon clan-icon" src="" alt="Icono de clan">
@@ -191,13 +232,14 @@
                         <span class="card-title">Nombre del personaje</span>
                         <!-- Descripción de la carta -->
                         <span class="card-description">Breve descripción del personaje</span>
-                        <div class="text-background">
-                            <img src="imagenes/default/textBackground.jpg" alt="Fondo de texto">
-                        </div>
+                        <!-- <div class="text-background">
+                            <img src="imagenes/default/textBackground.jpg" alt="Fondo de texto"> -->
                     </div>
                 </div>
             </div>
+            <button id="export-btn">Descargar PNG</button>
         </div>
+    </div>
 
     </div>
 
