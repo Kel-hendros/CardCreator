@@ -11,6 +11,11 @@ function changeImage(imageUrl) {
   const img = document.querySelector(".user-image img");
   if (img) {
     img.src = imageUrl;
+    img.onerror = () => {
+      alert(
+        "No se puede usar la imagen desde la URL ingresada.\nBajá la imagen a tu computadora y subila desde ahi con el botón 'Cargar Imagen'."
+      );
+    };
   }
 }
 
@@ -199,6 +204,23 @@ document.addEventListener("DOMContentLoaded", () => {
         img.style.transform = "scale(1)";
         updateSliders();
       };
+      fetch(urlInput.value)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.blob();
+        })
+        .then((blob) => {
+          const objectURL = URL.createObjectURL(blob);
+          changeImage(objectURL);
+        })
+        .catch((err) => {
+          console.error("Error fetching or converting image:", err);
+          alert(
+            "No se puede usar la imagen desde la URL ingresada.\nBajá la imagen a tu computadora y subila desde ahi con el botón 'Subir Imagen'."
+          );
+        });
     }
   });
 
@@ -319,7 +341,12 @@ document.addEventListener("DOMContentLoaded", () => {
           link.href = dataUrl;
           link.click();
         })
-        .catch((err) => console.error("Error exportando la carta:", err))
+        .catch((err) => {
+          console.error("Error exportando la carta:", err);
+          alert(
+            "No se puede usar la imagen desde la URL ingresada.\nBajá la imagen a tu computadora y subila desde ahi con el botón 'Subir Imagen'."
+          );
+        })
         .finally(() => {
           card.style.zoom = prevZoom;
         });
